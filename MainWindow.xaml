@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LightAndButton"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="Light And Button" Height="450" Width="800">
+    <Window.Resources>
+        
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Bisque"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+    </Window.Resources>
+    <Grid VerticalAlignment="Center">
+        <StackPanel>
+            <Ellipse x:Name="lamp" Fill="Gray" Width="100" Height="100" Margin="20"/>
+            <Button Content="Кнопочка" Width="100" Height="50" PreviewMouseLeftButtonDown="Button_MouseLeftButtonDown"/>
+        </StackPanel>
     </Grid>
 </Window>
